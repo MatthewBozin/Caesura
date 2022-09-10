@@ -1,0 +1,240 @@
+h1 {
+    color: orange;
+    font-size: 4em;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.not {
+    text-decoration: underline;
+}
+
+.log {
+    font-size: 4em;
+    color: whitesmoke;
+    width: auto;
+
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* buttons */
+.butt {
+    margin: 1em;
+    padding: 4em 3em;
+    color: aliceblue;
+    font-size: 2em;
+    float: inline-end;
+}
+
+.buttOn {
+    margin: 1em;
+    padding: 3em 3em;
+    color: aliceblue;
+    font-size: 2em;
+    float: inline-end;
+}
+
+.leButt {
+    margin: 1em;
+    padding: 3em 3em;
+    color: aliceblue;
+    font-size: 2em;
+    float: inline-end;
+}
+
+/* Burgers */
+.cheeburger {
+    background-image: url(images/cheesebur.jpg);
+    background-size: contain;
+}
+
+.burger {
+    background-image: url(images/burger.jpg);
+    background-size: cover;
+}
+
+.waffle {
+    background-image: url(images/waffle.jpg);
+    background-size: cover;
+}
+
+/* Drinks */
+.drink {
+    background-image: url(images/drink.jpg);
+    background-size: cover;
+    color: red
+}
+
+.coke {
+    background-image: url(images/drink.jpg);
+    background-size: cover;
+    color: red
+}
+
+.coke_zero {
+    background-image: url(images/coke_zero.jpg);
+    background-size: cover;
+    color: darkred
+}
+
+.diet_coke {
+    background-image: url(images/diet_coke.jpg);
+    background-size: cover;
+    color: darkslategrey
+}
+
+.sprite {
+    background-image: url(images/sprite.jpg);
+    background-size: cover;
+    color: green
+}
+
+/* Fries */
+.fries {
+    background-image: url(images/freedomfries.jpg);
+    background-size: cover;
+}
+
+.small {
+    background-image: url(images/frizz.jpg);
+    background-size: cover;
+}
+
+.medium {
+    background-image: url(images/medium.jpg);
+    background-size: cover;
+}
+
+/* LOGIN */
+body{
+    background-image: url("istockphoto-959839190-612x612burger.jpg");
+}
+
+header{
+    float: right;
+    display: block;
+    text-decoration: none;
+    font-size: 40px;
+    font-weight: 500;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; 
+}
+
+.Login{
+    font-weight: bold;
+    color: orange;
+    display: block;
+    margin: 10px;
+    float: left;
+    
+}
+
+.Signup{
+    font-weight: bold;
+    color: orange;
+    display: block;
+    margin: 10px;
+    float: left;
+}
+
+.AboutUs{
+    font-weight: bold;
+    color: orange;
+    display: block; 
+    margin: 10px;
+    float: left;
+}
+
+h1, .McRonalds{
+    text-align: center;
+    color: orange;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 120px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.Reviews{
+    
+    padding-top: 300px;
+    padding-bottom: 250px;
+    border: 50px;
+    margin: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+h2, .Reviews{
+    color: orange;
+    font-size: 70px;
+    font-weight: 400;
+}
+
+.reviewOne{
+    text-align: center;
+    color: orange;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.reviewTwo{
+    text-align: center;
+    color: orange;
+    font-size: 50px;
+    margin-top: 20px;
+}
+
+.reviewThree{
+    text-align: center;
+    color: orange;
+    font-size: 50px;
+}
+.todoBackg{
+    background-image: url(images/bubbles.jpg);
+    background-size: cover;
+}
+
+/* styles */
+.outline {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+
+}
+
+.big {
+    font: 2em;
+}
+
+.topBit {
+    border: 1px black solid;
+    background-color: black;
+    opacity: 0.5;
+    width: auto;
+    color: whitesmoke
+}
+
+form{
+    text-align: center;
+}
+
+form, span{
+    font-size: 30px;
+    color: orange;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}

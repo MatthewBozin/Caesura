@@ -5,8 +5,8 @@ const PoemSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
-  completed: {
-    type: Boolean,
+  authors: {
+    type: Array,
     required: true,
   },
   userId: {

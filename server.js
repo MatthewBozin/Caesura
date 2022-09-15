@@ -19,19 +19,19 @@ require('./config/passport')(passport)
 connectDB()
 
 app.set('view engine', 'ejs')
-app.use(cors())
+app.use(cors({origin: 'http://localhost:3000', credentials: true}))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))
 // Sessions
 app.use(
-    session({
-      secret: process.env.SECRET,
-      resave: false,
-      saveUninitialized: false,
-      store: new MongoStore({ mongooseConnection: mongoose.connection }),
-    })
-  )
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  })
+)
   
 // Passport middleware
 app.use(passport.initialize())
@@ -43,5 +43,5 @@ app.use('/', mainRoutes)
 app.use('/poems', poemRoutes)
  
 app.listen(process.env.PORT, ()=>{
-    console.log(`Server is running on port ${process.env.PORT}, you better catch it!`)
+  console.log(`Server is running on port ${process.env.PORT}, you better catch it!`)
 })    

@@ -8,10 +8,6 @@ router.get('/', ensureAuth, poemsController.getPoems)
 
 router.post('/createPoem', poemsController.createPoem)
 
-router.put('/markComplete', poemsController.markComplete)
-
-router.put('/markIncomplete', poemsController.markIncomplete)
-
 router.delete('/deletePoem', poemsController.deletePoem)
 
 module.exports = router

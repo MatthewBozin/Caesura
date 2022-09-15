@@ -5,15 +5,9 @@ const User = require('../models/User')
   exports.getLogin = (req, res) => {
     //if user is logged in, redirects them to todos, otherwise redirects to login
     if (req.user) {
-      return 
+      return res.json({userName: req.user.userName, email: req.user.email, password: req.user.password})
     }
-    res.render('login', {
-      title: 'Login'
-    })
-  }
-
-  exports.test = (req, res) => {
-    res.json({test: "test"})
+    return res.json({message: 'Not logged in.'})
   }
   
   exports.postLogin = (req, res, next) => {
@@ -24,8 +18,7 @@ const User = require('../models/User')
     if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
     //if validation error is thrown, display error and redirect to signup
     if (validationErrors.length) {
-      req.flash('errors', validationErrors)
-      return
+      return res.json({message: 'Validation failed.'})
     }
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false }) 
     //uses 'local' strategy from passport
@@ -33,12 +26,11 @@ const User = require('../models/User')
     passport.authenticate('local', (err, user, info) => {
       if (err) { return next(err) }
       if (!user) {
-        req.flash('errors', info)
-        return
+        return res.json({message: 'Authentication failed.'})
       }
       req.logIn(user, (err) => {
         if (err) { return next(err) }
-        req.flash('success', { msg: 'Success! You are logged in.' })
+        return res.json({userName: req.user.userName, email: req.user.email, password: req.user.password})
       })
     })(req, res, next)
   }
@@ -51,6 +43,7 @@ const User = require('../models/User')
     req.session.destroy((err) => {
       if (err) console.log('Error : Failed to destroy the session during logout.', err)
       req.user = null
+      return res.json({message: 'Logout successful.'})
     })
   }
   
@@ -58,7 +51,7 @@ const User = require('../models/User')
   //otherwise redirects them to 'signup' page
   exports.getSignup = (req, res) => {
     if (req.user) {
-      return
+      return res.json({message: 'You are already logged in!'})
     }
     res.render('signup', {
       title: 'Create Account'
@@ -73,7 +66,6 @@ const User = require('../models/User')
     if (req.body.password !== req.body.confirmPassword) validationErrors.push({ msg: 'Passwords do not match' })
     //if validation error is thrown, display error and redirect to signup
     if (validationErrors.length) {
-      req.flash('errors', validationErrors)
       return res.json({test: validationErrors})
     }
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
@@ -94,7 +86,6 @@ const User = require('../models/User')
     ]}, (err, existingUser) => {
       if (err) { return next(err) }
       if (existingUser) {
-        req.flash('errors', { msg: 'Account with that email address or username already exists.' })
         return res.json({message: 'Account with that email address or username already exists.'})
       }
       user.save((err) => {

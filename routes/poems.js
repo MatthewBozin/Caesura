@@ -6,6 +6,8 @@ const { ensureAuth } = require('../middleware/auth')
 //ensureAuth is the login check step
 router.get('/', ensureAuth, poemsController.getPoems)
 
+router.get('/getFeed', poemsController.getFeed)
+
 router.post('/createPoem', poemsController.createPoem)
 
 router.delete('/deletePoem', poemsController.deletePoem)

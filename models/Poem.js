@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const PoemSchema = new mongoose.Schema({
-  poem: {
+  lines: {
     type: Array,
     required: true,
   },

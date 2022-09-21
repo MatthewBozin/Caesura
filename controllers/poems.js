@@ -20,7 +20,9 @@ module.exports = {
     createPoem: async (req, res)=>{
         try{
             let date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
-            await Poem.create({poem: req.body.poem, userId: req.user.id, date: date})
+            await Poem.create({
+                lines: req.body.lines, authors: req.body.authors, userId: req.user.id, date: date
+            })
             console.log('Poem has been added!')
         }catch(err){
             console.log(err)

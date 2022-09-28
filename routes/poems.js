@@ -10,6 +10,6 @@ router.get('/getFeed', poemsController.getFeed)
 
 router.post('/createPoem', poemsController.createPoem)
 
-router.delete('/deletePoem', poemsController.deletePoem)
+router.post('/deletePoem', poemsController.deletePoem)
 
 module.exports = router

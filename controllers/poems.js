@@ -29,9 +29,8 @@ module.exports = {
         }
     },
     deletePoem: async (req, res)=>{
-        console.log(req.body.poemIdFromJSFile)
         try{
-            await Poem.findOneAndDelete({_id:req.body.poemIdFromJSFile})
+            await Poem.findOneAndDelete({_id: req.body._id})
             console.log('Deleted Poem')
             res.json('Deleted It')
         }catch(err){

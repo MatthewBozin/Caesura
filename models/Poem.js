@@ -9,6 +9,10 @@ const PoemSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
+  title: {
+    type: String,
+    required: true,
+  },
   userId: {
     type: String,
     required: true

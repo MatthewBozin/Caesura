@@ -21,7 +21,7 @@ module.exports = {
         try{
             let date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
             await Poem.create({
-                lines: req.body.lines, authors: req.body.authors, userId: req.user.id, userName: req.user.userName, date: date
+                lines: req.body.lines, authors: req.body.authors, title: req.body.title, userId: req.user.id, userName: req.user.userName, date: date
             })
             console.log('Poem has been added!')
         }catch(err){

@@ -24,6 +24,7 @@ module.exports = {
                 lines: req.body.lines, authors: req.body.authors, title: req.body.title, userId: req.user.id, userName: req.user.userName, date: date
             })
             console.log('Poem has been added!')
+            res.json('Poem has been added!')
         }catch(err){
             console.log(err)
         }

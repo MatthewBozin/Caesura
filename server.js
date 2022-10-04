@@ -20,7 +20,7 @@ connectDB()
 
 app.set('view engine', 'ejs')
 
-const whitelist = ['http://localhost:3000', 'http://localhost:8000', 'https://caesura-poem-remixer.herokuapp.com/']
+const whitelist = ['http://localhost:3000', 'http://localhost:8000', 'https://caesura-poem-remixer.herokuapp.com']
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("** Origin of request " + origin)

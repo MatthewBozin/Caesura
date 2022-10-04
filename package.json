@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap"
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && heroku buildpacks:set heroku/nodejs && npm run build"
   },
   "author": "",
   "license": "MIT",

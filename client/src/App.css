@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+}
+
+button {
+  border: 1px solid white;
+  padding: 8px;
+}
+
+.app {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.card {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 5px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.loader {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #282c34;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.choice {
+  width: 33%;
+  border: 1px solid #282c34;
+}
+
+.choice:hover {
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.poem {
+  max-width: 600;
+  margin: 0 auto;
+}
+
+.prevLine {
+  opacity: 60%;
+}
+
+.final {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Button, CircularProgress } from '@mui/material'
+import { Button, CircularProgress, speedDialActionClasses } from '@mui/material'
 import DataService from "../dataService";
 
 const Create = (props) => {
@@ -20,11 +20,11 @@ const Create = (props) => {
 
   const handleSubmit = async e => {
       e.preventDefault();
+      setLoading(true)
       setStep('poem')
       let msg = poems.poem;
       msg.userName = props.user.userName;
       msg.authors = [...new Set(msg.authors)];
-      props.setPage('feed')
       setPoems({
         all: [],
         choices: [],
@@ -32,6 +32,7 @@ const Create = (props) => {
         poem: {authors: [], lines: [], title: ''}
       })
       await DataService.createPoem(msg);
+      props.setPage('feed')
   }
 
   const select = (from, to, times) => {
@@ -110,7 +111,7 @@ const Create = (props) => {
         </div>
       ) : (
         <div className="app">
-          <h2>Build Your Poem</h2>
+          <h2>Build Your {step === 'poem' && <span>Poem</span>}{step === 'title' && <span>Title</span>}</h2>
             <div>
               {step === 'poem' && (
                 <section className="container">
@@ -132,7 +133,7 @@ const Create = (props) => {
               {step === 'title' && (
                 <section className="container">
                   {activeTitles.map((word, index) => {
-                    return <Button onClick={() => {addToTitle(word)}} key={index} type='submit' variant='contained' color='primary' fullWidth>{word}</Button>
+                    return <button onClick={() => {addToTitle(word)}} key={index} type='submit'>{word}</button>
                   })}
                 </section>
               )}

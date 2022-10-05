@@ -19,7 +19,6 @@ const Create = (props) => {
   const [loading, setLoading] = useState(poems.all.length === 0)
 
   const handleSubmit = async e => {
-      setLoading(true)
       e.preventDefault();
       setStep('poem')
       let msg = poems.poem;
@@ -33,7 +32,6 @@ const Create = (props) => {
         poem: {authors: [], lines: [], title: ''}
       })
       await DataService.createPoem(msg);
-      setLoading(false)
   }
 
   const select = (from, to, times) => {

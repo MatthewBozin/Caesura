@@ -1,6 +1,7 @@
 import './App.css';
 import React, {useState, useEffect} from "react";
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Create from './pages/Create.js';
 import Landing from './pages/Landing.js';
 import Login from './pages/Login';
@@ -40,6 +41,7 @@ function App() {
           {page === 'create' && <Create setPage={setPage} user={user}/>}
           {page === 'login' && <Login setUser={setUser} setPage={setPage}/>}
           {page === 'signup' && <Signup />}
+          <Footer />
         </div>
       )}
     </>

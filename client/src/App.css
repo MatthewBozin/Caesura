@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+a {
+  color: #2196f3;
+}
+
 button {
   border: 1px solid white;
   padding: 8px;
@@ -17,6 +21,15 @@ button {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.footer {
+  border-top: 1px solid white;
+  color: white;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .card {

@@ -37,6 +37,7 @@ const Create = (props) => {
 
   const select = (from, to, times) => {
     for (let i = 0; i < times; i++) {
+      if (from.length === 0) continue;
       to.push(from.splice(Math.floor(Math.random() * from.length), 1)[0]);
     }
   }
@@ -44,7 +45,6 @@ const Create = (props) => {
   const selectPoems = () => {
     //splices three randomly selected poems from poems.all and pushes them into choices
     select(poems.all, poems.choices, 3)
-    console.log(poems.all.length)
     //for each poem in choices
     poems.choices.map((choice) => {
       //select a random index from poem.lines.length

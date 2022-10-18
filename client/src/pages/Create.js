@@ -133,11 +133,10 @@ const Create = (props) => {
               {step === 'title' && (
                 <section className="container">
                   {activeTitles.map((word, index) => {
-                    return <button onClick={() => {addToTitle(word)}} key={index} type='submit'>{word}</button>
+                    return <button className='title' onClick={() => {addToTitle(word)}} key={index} type='submit'>{word}</button>
                   })}
                 </section>
               )}
-              <hr />
             </div>
           {poems.all.length !== 0 && 
             <h3>Your Poem</h3>
@@ -151,10 +150,10 @@ const Create = (props) => {
             })}
           </section>
           {step === 'poem' && 
-            <Button onClick={() => {resetTitles();setStep('title')}} type='submit' variant='contained' color='primary' fullWidth>Build Title</Button>
+            <Button onClick={() => {resetTitles();setStep('title')}} type='submit' variant='contained' color='primary'>Build Title</Button>
           }
           {step === 'title' && 
-            <Button onClick={handleSubmit} type='submit' variant='contained' color='primary' fullWidth>Create</Button>
+            <Button onClick={handleSubmit} type='submit' variant='contained' color='primary'>Create</Button>
           }
         </div>
       )}

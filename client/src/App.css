@@ -65,6 +65,10 @@ button {
   cursor: pointer;
 }
 
+.title {
+  cursor: pointer;
+}
+
 .poem {
   max-width: 600;
   margin: 0 auto;

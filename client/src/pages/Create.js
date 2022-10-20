@@ -67,7 +67,7 @@ const Create = (props) => {
   }
 
   const getPoems = async () => {
-    const res = await fetch(`https://poetrydb.org/random/30`);
+    const res = await fetch(`https://poetrydb.org/random/60`);
     const data = await res.json();
     poems.all = data;
     setPoems({...poems});
@@ -76,12 +76,13 @@ const Create = (props) => {
   }
 
   const add = async (line, author, title) => {
-    if (poems.all.length === 3) {
+    if (poems.all.length <= 3) {
       await getPoems();
     }
     poems.poem.lines.push(line);
     poems.poem.authors.push(author);
-    setAllTitles([...allTitles, ...title.split(' ')])
+    let cleanTitle = title.split(' ').filter((word) => word !== 'Rape')
+    setAllTitles([...allTitles, ...cleanTitle])
     poems.choices = [];
     selectPoems();
   }

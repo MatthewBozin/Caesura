@@ -1,4 +1,5 @@
 const Poem = require('../models/Poem')
+const PoemData = require('../models/PoemData')
 
 module.exports = {
     getPoems: async (req,res)=>{
@@ -37,5 +38,13 @@ module.exports = {
         }catch(err){
             console.log(err)
         }
-    }
+    },
+    getPoemData: async (req,res)=>{
+        try{
+            let poemData = await PoemData.find()
+            res.json({poemData: poemData})
+        }catch(err){
+            console.log(err)
+        }
+    },
 }    

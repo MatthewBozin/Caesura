@@ -12,4 +12,6 @@ router.post('/createPoem', poemsController.createPoem)
 
 router.post('/deletePoem', poemsController.deletePoem)
 
+router.get('/poemData/', poemsController.getPoemData)
+
 module.exports = router

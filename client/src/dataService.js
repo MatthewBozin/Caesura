@@ -32,6 +32,9 @@ class DataService {
         console.log(msg)
         return URL.post(`/poems/deletePoem`, msg)
     }
+    getPoemData() {
+        return URL.get(`/poems/poemData`)
+    }
 }
 
 export default new DataService();

@@ -67,8 +67,8 @@ const Create = (props) => {
   }
 
   const getPoems = async () => {
-    const res = await fetch(`https://poetrydb.org/random/60`);
-    const data = await res.json();
+    const res = await DataService.getPoemData();
+    const data = await res.data.poemData;
     poems.all = data;
     setPoems({...poems});
     setLoading(false);

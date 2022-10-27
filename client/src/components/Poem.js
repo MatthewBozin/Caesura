@@ -7,7 +7,7 @@ const Poem = (props) => {
     <Card className="app poem" style={{ border: "none", boxShadow: "none" }}>
         <CardContent className="app">
             {props.poem.title && <Typography align='center' gutterBottom variant='h4'>{props.poem.title}</Typography>}
-            {props.page === 'feed' && <Typography align='center' gutterBottom variant='h5'>By {props.poem.userName}</Typography>}
+            {props.page !== 'profile' && <Typography align='center' gutterBottom variant='h5'>By {props.poem.userName}</Typography>}
             {props.poem.lines.map((line, i) => {
                 return <Typography align='center' key={i}>{line}</Typography>
             })}
@@ -30,15 +30,17 @@ const Poem = (props) => {
                 props.setPoems(null)
               }}>Snaps: {props.poem.snaps.length}</Button>}    
               {props.page === 'profile' && <Button variant='contained' color='primary' onClick={() => {
-              DataService.deletePoem({_id: props.poem._id}).then(() => {
-                DataService.getPoems().then((res) => {
-                  props.setPoems(res.data.poems)
+                DataService.deletePoem({_id: props.poem._id}).then(() => {
+                  DataService.getPoems().then((res) => {
+                    props.setPoems(res.data.poems)
+                  })
                 })
-              })
-              props.setPoems(null)
+                props.setPoems(null)
               }}>Delete</Button>}
+              {props.page !== 'poem' && <Button variant='contained' color='primary' onClick={() => {
+                props.viewPoem(props.poem._id)
+              }}>View</Button>}
             </div>
-            
         </CardContent>
     </Card>
   )

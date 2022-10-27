@@ -8,14 +8,17 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Feed from './pages/Feed';
 import Profile from './pages/Profile';
+import Comment from './pages/Comment'
+import ViewPoem from './pages/ViewPoem';
 import dataService from './dataService';
 import { CircularProgress } from '@mui/material';
 
 function App() {
-
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState("landing");
   const [user, setUser] = useState(null);
+  const [poem, setPoem] = useState(null)
+  const [_id, set_Id] = useState(null)
 
   useEffect(() => {
     dataService.checkLogin().then((res) => {
@@ -25,6 +28,14 @@ function App() {
       setUser(res.data)
     })
   }, [])
+
+  const viewPoem = (_id) => {
+    dataService.getPoem({id: _id}).then((res) => {
+      setPoem(res.data.poem)
+      set_Id(_id)
+    })
+    setPage('viewPoem')
+  }
 
   return (
     <>
@@ -36,9 +47,11 @@ function App() {
         <div>
           <Navbar setPage={setPage} user={user} setUser={setUser}/>
           {page === 'landing' && <Landing user={user} setPage={setPage}/>}
-          {page === 'feed' && <Feed user={user} setPage={setPage}/>}
-          {page === 'profile' && <Profile user={user}/>}
+          {page === 'feed' && <Feed user={user} viewPoem={viewPoem}/>}
+          {page === 'profile' && <Profile user={user} viewPoem={viewPoem}/>}
+          {page === 'viewPoem' && <ViewPoem poem={poem} setPage={setPage}/>}
           {page === 'create' && <Create setPage={setPage} user={user}/>}
+          {page === 'comment' && <Comment setPage={setPage} user={user} _id={_id}/>}
           {page === 'login' && <Login setUser={setUser} setPage={setPage}/>}
           {page === 'signup' && <Signup />}
           <Footer />

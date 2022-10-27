@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { Button, CircularProgress } from '@mui/material'
 import DataService from "../dataService";
-import Choice from "../components/Choice";
 
 const Comment = (props) => {
 
@@ -14,18 +13,18 @@ const Comment = (props) => {
   const [loading, setLoading] = useState(poems.all.length === 0)
 
   const handleSubmit = async e => {
-      e.preventDefault();
+      e.preventDefault()
       setLoading(true)
-      setStep('poem')
-      let msg = poems.poem;
-      msg.userName = props.user.userName;
-      msg.authors = [...new Set(msg.authors)];
+      let msg = poems.poem
+      msg.userName = props.user.userName
+      msg.authors = [...new Set(msg.authors)]
+      msg.poem=props._id
       setPoems({
         all: [],
         choices: [],
         poem: {authors: [], lines: []}
       })
-      await DataService.createComment(msg);
+      await DataService.createComment(msg)
       props.setPage('feed')
   }
 
@@ -95,7 +94,17 @@ const Comment = (props) => {
             <div>
                 <section className="container">
                   {poems.choices.map((poem, index) => {
-                    return <Choice poem={poem} add={add} key={index}/>
+                    return (
+                      <div className="choice" key={index} onClick={() => {add(poem.line, poem.author, poem.title)}}>
+                        <h6>from</h6>
+                        <h3>{poem.title}</h3>
+                        <h6>{poem.author}</h6>
+                        {poem.prevLines.map((prevLine, index) => {
+                          return <div className="prevLine" key={index}>{prevLine}</div>
+                        })}
+                        <div>{poem.line}</div>
+                      </div>
+                    )
                   })}
                 </section>
             </div>

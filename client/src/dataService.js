@@ -22,6 +22,9 @@ class DataService {
     getPoems() {
         return URL.get(`/poems/`)
     }
+    getPoem() {
+        return URL.get(`/poems/getPoem`)
+    }
     getFeed() {
         return URL.get(`/poems/getFeed`)
     }

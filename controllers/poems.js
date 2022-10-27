@@ -2,6 +2,14 @@ const Poem = require('../models/Poem')
 const PoemData = require('../models/PoemData')
 
 module.exports = {
+    getPoem: async (req,res)=>{
+        try{
+            let poem = await Poem.findById(req.body.id)
+            res.json({poem: poem})
+        }catch(err){
+            console.log(err)
+        }
+    },
     getPoems: async (req,res)=>{
         try{
             let poems = await Poem.find({userId:req.user.id}).sort({ _id: "descending" })

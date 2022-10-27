@@ -36,8 +36,8 @@ function App() {
         <div>
           <Navbar setPage={setPage} user={user} setUser={setUser}/>
           {page === 'landing' && <Landing user={user} setPage={setPage}/>}
-          {page === 'feed' && <Feed setPage={setPage}/>}
-          {page === 'profile' && <Profile />}
+          {page === 'feed' && <Feed user={user} setPage={setPage}/>}
+          {page === 'profile' && <Profile user={user}/>}
           {page === 'create' && <Create setPage={setPage} user={user}/>}
           {page === 'login' && <Login setUser={setUser} setPage={setPage}/>}
           {page === 'signup' && <Signup />}

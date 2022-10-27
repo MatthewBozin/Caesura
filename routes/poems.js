@@ -14,4 +14,6 @@ router.post('/deletePoem', poemsController.deletePoem)
 
 router.get('/poemData/', poemsController.getPoemData)
 
+router.put('/snap', poemsController.snap)
+
 module.exports = router

@@ -22,7 +22,7 @@ module.exports = {
         try{
             let date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
             await Poem.create({
-                lines: req.body.lines, authors: req.body.authors, title: req.body.title, userId: req.user.id, userName: req.user.userName, date: date
+                lines: req.body.lines, authors: req.body.authors, title: req.body.title, userId: req.user.id, userName: req.user.userName, date: date, snaps: []
             })
             console.log('Poem has been added!')
             res.json('Poem has been added!')
@@ -43,6 +43,21 @@ module.exports = {
         try{
             let poemData = await PoemData.find()
             res.json({poemData: poemData})
+        }catch(err){
+            console.log(err)
+        }
+    },
+    snap: async (req,res)=>{
+        try{
+            const found = await Poem.find({_id: req.body._id})
+            let poem = found[0]
+            if (poem.snaps.includes(req.user.id)) {
+                poem.snaps = poem.snaps.filter(id => id !== req.user.id)
+            } else {
+                poem.snaps.push(req.user.id)
+            }
+            await poem.save()
+            res.json({poem: poem})
         }catch(err){
             console.log(err)
         }

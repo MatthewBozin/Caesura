@@ -2,19 +2,19 @@ import React, {useState, useEffect} from "react";
 import dataService from '../dataService';
 import Poem from "../components/Poem";
 
-const Feed = () => {
+const Feed = (props) => {
 
-  const [feed, setFeed] = useState(null);
+  const [poems, setPoems] = useState(null);
 
   useEffect(() => {
     dataService.getFeed().then((res) => {
-      setFeed(res.data.poems)
+      setPoems(res.data.poems)
     })
   }, [])
 
   return (
     <div className="app">
-        {feed && feed.map((poem, i) => <Poem poem={poem} page={'feed'} key={i} />)}
+        {poems && poems.map((poem, i) => <Poem user={props.user} poem={poem} setPoems={setPoems} page={'feed'} key={i} />)}
     </div>
   )
 }

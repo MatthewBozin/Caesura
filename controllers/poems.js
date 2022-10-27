@@ -34,7 +34,7 @@ module.exports = {
         try{
             await Poem.findOneAndDelete({_id: req.body._id})
             console.log('Deleted Poem')
-            res.json('Deleted It')
+            res.json('Deleted Poem')
         }catch(err){
             console.log(err)
         }

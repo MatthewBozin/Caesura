@@ -32,7 +32,7 @@ const Comment = (props) => {
                 })
               }}>Snaps: {props.comment.snaps.length}</Button>}    
               {props.user.userName === props.comment.userName && <Button variant='contained' color='primary' onClick={() => {
-                DataService.deleteComment({_id: props.comment._id}).then(() => {
+                DataService.deleteComment({_id: props.comment._id, poem: context.id}).then(() => {
                   DataService.getComments({_id: context.id}).then((res) => {
                     context.comments = res.data.comments
                     setContext({...context})

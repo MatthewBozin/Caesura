@@ -28,6 +28,10 @@ const PoemSchema = new mongoose.Schema({
   snaps:{
     type: Array,
     required: true
+  },
+  comments: {
+    type: Number,
+    required: true
   }
 })
 

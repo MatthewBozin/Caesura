@@ -1,4 +1,5 @@
-const Comment = require("../models/Comment");
+const Comment = require("../models/Comment")
+const Poem = require("../models/Poem")
 
 module.exports = {
   createComment: async (req, res) => {
@@ -7,6 +8,10 @@ module.exports = {
         await Comment.create({
             lines: req.body.lines, authors: req.body.authors, userId: req.user.id, userName: req.user.userName, date: date, snaps: [], poem: req.body.poem
         })
+        const found = await Poem.find({_id: req.body.poem})
+        let poem = found[0]
+        poem.comments += 1
+        await poem.save()
         console.log('Comment has been added!')
         res.json('Comment has been added!')
     }catch(err){
@@ -38,6 +43,10 @@ module.exports = {
   },
   deleteComment: async (req, res) => {
     try{
+        const found = await Poem.find({_id: req.body.poem})
+        let poem = found[0]
+        poem.comments -= 1
+        await poem.save()
         await Comment.findOneAndDelete({_id: req.body._id})
         console.log('Deleted Comment')
         res.json('Deleted Comment')

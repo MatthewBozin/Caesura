@@ -1,14 +1,17 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { Button, CircularProgress } from '@mui/material'
 import DataService from "../dataService";
+import { Context } from "../Context";
 
-const Comment = (props) => {
+const CreateComment = (props) => {
 
   const [poems, setPoems] = useState({
     all: [],
     choices: [],
     poem: {authors: [], lines: []}
   });
+
+  const [context] = useContext(Context)
 
   const [loading, setLoading] = useState(poems.all.length === 0)
 
@@ -18,14 +21,15 @@ const Comment = (props) => {
       let msg = poems.poem
       msg.userName = props.user.userName
       msg.authors = [...new Set(msg.authors)]
-      msg.poem=props._id
+      msg.poem=context.id
+      console.log(msg.poem)
       setPoems({
         all: [],
         choices: [],
         poem: {authors: [], lines: []}
       })
       await DataService.createComment(msg)
-      props.setPage('feed')
+      props.setPage('viewPoem')
   }
 
   const select = (from, to, times) => {
@@ -109,7 +113,7 @@ const Comment = (props) => {
                 </section>
             </div>
           {poems.all.length !== 0 && 
-            <h3>Your Poem</h3>
+            <h3>Your Comment</h3>
           }
           <section className="container final">
             {poems.poem.lines.map((line, index) => {
@@ -123,4 +127,4 @@ const Comment = (props) => {
   )
 }
 
-export default Comment
+export default CreateComment

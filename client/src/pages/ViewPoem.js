@@ -1,18 +1,15 @@
-import React, {useState} from "react";
+import React, {useContext} from "react";
 import Poem from "../components/Poem";
-import dataService from "../dataService";
 import { Button } from '@mui/material'
+import { Context } from "../Context";
 
 const ViewPoem = (props) => {
-    //const [comments, setComments] = useState([])
-    //if (!comments) {
-    //     let data = dataService.getComments(props.id)
-    //     setComments(data)
-    // }
+  const [context] = useContext(Context)
   return (
-    <div>
-        <Poem user={props.user} poem={props.poem} page={'poem'} />
-        <Button onClick={props.setPage('comment')}>Create Comment</Button>
+    <div className='app'>
+        <Poem user={props.user} poem={context.poem} page={'poem'} />
+        {/* {context.comments.map((comment) => <div>nug</div>)} */}
+        <Button onClick={() => {props.setPage('comment')}}>Create Comment</Button>
     </div>
   )
 }

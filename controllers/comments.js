@@ -13,6 +13,14 @@ module.exports = {
         console.log(err)
     }
   },
+  getComments: async (req,res)=>{
+    try{
+        let comments = await Comment.find({poem:req.body._id})
+        res.json({comments: comments})
+    }catch(err){
+        console.log(err)
+    }
+  },
   snapComment: async (req, res) => {
     try{
         const found = await Comment.find({_id: req.body._id})

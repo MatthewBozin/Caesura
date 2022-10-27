@@ -42,7 +42,11 @@ class DataService {
         return URL.put(`/poems/snap`, msg)
     }
     createComment(msg) {
-        return URL.post(`/poems/createComment`, msg)
+        return URL.post(`/comments/createComment`, msg)
+    }
+    getComments(msg) {
+        console.log(msg)
+        return URL.post(`/comments/getComments`, msg)
     }
 }
 

@@ -4,7 +4,9 @@ const commentsController = require("../controllers/comments");
 
 //Comment Routes - simplified for now
 
-router.post("/createComment/:id", commentsController.createComment);
+router.post("/createComment/", commentsController.createComment);
+
+router.post("/getComments/", commentsController.getComments);
 
 router.post("/snapComment/:id", commentsController.snapComment);
 

@@ -26,8 +26,8 @@ const CommentSchema = new mongoose.Schema({
     required: true
   },
   poem: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Poem",
+    type: String,
+    required: true,
   },
 });
 

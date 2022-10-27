@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Button, Typography, Card, CardContent } from '@mui/material'
 import DataService from "../dataService";
+import { Context } from '../Context';
 
 const Poem = (props) => {
+  const [context, setContext] = useContext(Context)
   return (
     <Card className="app poem" style={{ border: "none", boxShadow: "none" }}>
         <CardContent className="app">
@@ -37,8 +39,14 @@ const Poem = (props) => {
                 })
                 props.setPoems(null)
               }}>Delete</Button>}
-              {props.page !== 'poem' && <Button variant='contained' color='primary' onClick={() => {
-                props.viewPoem(props.poem._id)
+              {props.page !== 'poem' && <Button variant='contained' color='primary' onClick={async () => {
+                context.id = props.poem._id
+                context.poem = props.poem
+                context.page = 'viewPoem'
+                const res = await DataService.getComments({_id: context.id})
+                console.log(res.data.comments)
+                context.comments = res.data.comments
+                setContext({...context})
               }}>View</Button>}
             </div>
         </CardContent>

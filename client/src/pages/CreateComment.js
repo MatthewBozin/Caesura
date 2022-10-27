@@ -11,7 +11,7 @@ const CreateComment = (props) => {
     poem: {authors: [], lines: []}
   });
 
-  const [context] = useContext(Context)
+  const [context, setContext] = useContext(Context)
 
   const [loading, setLoading] = useState(poems.all.length === 0)
 
@@ -29,7 +29,12 @@ const CreateComment = (props) => {
         poem: {authors: [], lines: []}
       })
       await DataService.createComment(msg)
-      props.setPage('viewPoem')
+      DataService.getComments({_id: context.id}).then((res) => {
+        context.comments = res.data.comments
+        context.page = 'viewPoem'
+        setContext({...context})
+      })
+      //props.setPage('viewPoem')
   }
 
   const select = (from, to, times) => {

@@ -38,6 +38,9 @@ class DataService {
     snap(msg) {
         return URL.put(`/poems/snap`, msg)
     }
+    createComment(msg) {
+        return URL.post(`/poems/createComment`, msg)
+    }
 }
 
 export default new DataService();

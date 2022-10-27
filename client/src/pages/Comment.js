@@ -25,7 +25,7 @@ const Comment = (props) => {
         choices: [],
         poem: {authors: [], lines: []}
       })
-      await DataService.createPoem(msg);
+      await DataService.createComment(msg);
       props.setPage('feed')
   }
 

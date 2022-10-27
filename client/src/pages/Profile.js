@@ -14,7 +14,7 @@ const Profile = (props) => {
   return (
     <div className="app">
         <h1>Your Poems</h1>
-        {poems && poems.map((poem, i) => <Poem user={props.user} poem={poem} setPoems={setPoems} page='profile' key={i} />)}
+        {poems && poems.map((poem, i) => <Poem user={props.user} poem={poem} setPoems={setPoems} viewPoem={props.viewPoem} page='profile' key={i} />)}
     </div>
   )
 }

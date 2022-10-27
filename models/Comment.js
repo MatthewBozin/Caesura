@@ -1,16 +1,12 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const PoemSchema = new mongoose.Schema({
+const CommentSchema = new mongoose.Schema({
   lines: {
     type: Array,
     required: true,
   },
   authors: {
     type: Array,
-    required: true,
-  },
-  title: {
-    type: String,
     required: true,
   },
   userId: {
@@ -29,10 +25,10 @@ const PoemSchema = new mongoose.Schema({
     type: Array,
     required: true
   },
-  comments: {
-    type: Number,
-    required: true
-  }
-})
+  poem: {
+    type: String,
+    required: true,
+  },
+});
 
-module.exports = mongoose.model('Poem', PoemSchema)
+module.exports = mongoose.model("Comment", CommentSchema);

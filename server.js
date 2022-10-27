@@ -10,6 +10,7 @@ const logger = require('morgan')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
 const poemRoutes = require('./routes/poems')
+const commentRoutes = require('./routes/comments');
 
 require('dotenv').config({path: './config/.env'})
 
@@ -57,6 +58,7 @@ app.use(flash())
   
 app.use('/', mainRoutes)
 app.use('/poems', poemRoutes)
+app.use('/comments', commentRoutes)
 
 const path = require('path');
 if (process.env.NODE_ENV === 'production') {

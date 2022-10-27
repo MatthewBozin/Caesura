@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState, useEffect} from "react";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Create from './pages/Create.js';
+import CreatePoem from './pages/CreatePoem.js';
 import Landing from './pages/Landing.js';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -45,7 +45,7 @@ function App() {
             {context.page === 'feed' && <Feed user={user}/>}
             {context.page === 'profile' && <Profile user={user}/>}
             {context.page === 'viewPoem' && <ViewPoem setPage={setPage} user={user}/>}
-            {context.page === 'create' && <Create setPage={setPage} user={user}/>}
+            {context.page === 'create' && <CreatePoem setPage={setPage} user={user}/>}
             {context.page === 'comment' && <CreateComment setPage={setPage} user={user}/>}
             {context.page === 'login' && <Login setUser={setUser} setPage={setPage}/>}
             {context.page === 'signup' && <Signup />}

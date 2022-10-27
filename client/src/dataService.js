@@ -32,7 +32,6 @@ class DataService {
         return URL.post(`/poems/createPoem`, msg)
     }
     deletePoem(msg) {
-        console.log(msg)
         return URL.post(`/poems/deletePoem`, msg)
     }
     getPoemData() {
@@ -45,8 +44,13 @@ class DataService {
         return URL.post(`/comments/createComment`, msg)
     }
     getComments(msg) {
-        console.log(msg)
         return URL.post(`/comments/getComments`, msg)
+    }
+    snapComment(msg) {
+        return URL.put(`/comments/snapComment`, msg)
+    }
+    deleteComment(msg) {
+        return URL.post(`/comments/deleteComment`, msg)
     }
 }
 

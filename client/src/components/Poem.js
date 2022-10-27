@@ -23,22 +23,6 @@ const Poem = (props) => {
             <hr></hr>
             <Typography align='center'>On {props.poem.date}</Typography>
             <div>   
-              {props.user && <Button variant='contained' color='primary' onClick={() => {
-                DataService.snap({_id: props.poem._id}).then(() => {
-                  DataService.getPoems().then((res) => {
-                    props.setPoems(res.data.poems)
-                  })
-                })
-                props.setPoems(null)
-              }}>Snaps: {props.poem.snaps.length}</Button>}    
-              {props.page === 'profile' && <Button variant='contained' color='primary' onClick={() => {
-                DataService.deletePoem({_id: props.poem._id}).then(() => {
-                  DataService.getPoems().then((res) => {
-                    props.setPoems(res.data.poems)
-                  })
-                })
-                props.setPoems(null)
-              }}>Delete</Button>}
               {props.page !== 'poem' && <Button variant='contained' color='primary' onClick={async () => {
                 context.id = props.poem._id
                 context.poem = props.poem
@@ -47,7 +31,23 @@ const Poem = (props) => {
                 console.log(res.data.comments)
                 context.comments = res.data.comments
                 setContext({...context})
-              }}>View</Button>}
+              }}>View</Button>} 
+              {props.user && <Button variant='contained' color='primary' onClick={() => {
+                DataService.snap({_id: props.poem._id}).then(() => {
+                  DataService.getPoems().then((res) => {
+                    props.setPoems(res.data.poems)
+                  })
+                })
+                props.setPoems(null)
+              }}>Snaps: {props.poem.snaps.length}</Button>}   
+              {props.user.userName === props.poem.userName && <Button variant='contained' color='primary' onClick={() => {
+                DataService.deletePoem({_id: props.poem._id}).then(() => {
+                  DataService.getPoems().then((res) => {
+                    props.setPoems(res.data.poems)
+                  })
+                })
+                props.setPoems(null)
+              }}>Delete</Button>}
             </div>
         </CardContent>
     </Card>

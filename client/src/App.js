@@ -44,7 +44,7 @@ function App() {
             {context.page === 'landing' && <Landing user={user} setPage={setPage}/>}
             {context.page === 'feed' && <Feed user={user}/>}
             {context.page === 'profile' && <Profile user={user}/>}
-            {context.page === 'viewPoem' && <ViewPoem setPage={setPage}/>}
+            {context.page === 'viewPoem' && <ViewPoem setPage={setPage} user={user}/>}
             {context.page === 'create' && <Create setPage={setPage} user={user}/>}
             {context.page === 'comment' && <CreateComment setPage={setPage} user={user}/>}
             {context.page === 'login' && <Login setUser={setUser} setPage={setPage}/>}

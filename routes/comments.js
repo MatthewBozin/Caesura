@@ -8,8 +8,8 @@ router.post("/createComment/", commentsController.createComment);
 
 router.post("/getComments/", commentsController.getComments);
 
-router.post("/snapComment/:id", commentsController.snapComment);
+router.put("/snapComment/", commentsController.snapComment);
 
-router.post("/deleteComment/:id", commentsController.deleteComment);
+router.post("/deleteComment/", commentsController.deleteComment);
 
 module.exports = router;

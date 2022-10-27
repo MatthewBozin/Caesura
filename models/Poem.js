@@ -24,6 +24,10 @@ const PoemSchema = new mongoose.Schema({
   date:{
     type: String,
     required: true
+  },
+  snaps:{
+    type: Array,
+    required: true
   }
 })
 

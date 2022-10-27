@@ -35,6 +35,9 @@ class DataService {
     getPoemData() {
         return URL.get(`/poems/poemData`)
     }
+    snap(msg) {
+        return URL.put(`/poems/snap`, msg)
+    }
 }
 
 export default new DataService();

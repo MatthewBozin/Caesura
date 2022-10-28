@@ -1,6 +1,7 @@
 import React, {useState, useContext} from "react";
 import { Button, CircularProgress } from '@mui/material'
 import DataService from "../dataService";
+import Choice from "../components/Choice"
 import { Context } from "../Context";
 
 const CreateComment = (props) => {
@@ -103,17 +104,7 @@ const CreateComment = (props) => {
             <div>
                 <section className="container">
                   {poems.choices.map((poem, index) => {
-                    return (
-                      <div className="choice" key={index} onClick={() => {add(poem.line, poem.author, poem.title)}}>
-                        <h6>from</h6>
-                        <h3>{poem.title}</h3>
-                        <h6>{poem.author}</h6>
-                        {poem.prevLines.map((prevLine, index) => {
-                          return <div className="prevLine" key={index}>{prevLine}</div>
-                        })}
-                        <div>{poem.line}</div>
-                      </div>
-                    )
+                    return <Choice poem={poem} add={add} key={index}/>
                   })}
                 </section>
             </div>

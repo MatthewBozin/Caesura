@@ -14,7 +14,6 @@ const Landing = (props) => {
       <>
         <Button type='submit' variant='contained' color='primary'
           onClick={() => {props.setPage("login")}}>Log In</Button>
-        <hr />
         <Button type='submit' variant='contained' color='primary'
           onClick={() => {props.setPage("signup")}}>Sign Up</Button>
       </>

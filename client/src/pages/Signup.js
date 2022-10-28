@@ -29,7 +29,7 @@ const Signup = () => {
 
     return (
       <div className="app">
-          <Card className='card'>
+          <Card className='signup'>
               <CardContent>
                   <Typography gutterBottom variant='h5'>Sign Up</Typography>
                   <form onSubmit={handleSubmit}>

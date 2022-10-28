@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import { Button, CircularProgress } from '@mui/material'
+import { Button, Typography, CircularProgress } from '@mui/material'
 import DataService from "../dataService";
 import Choice from "../components/Choice"
 import { Context } from "../Context";
@@ -108,12 +108,9 @@ const CreateComment = (props) => {
                   })}
                 </section>
             </div>
-          {poems.all.length !== 0 && 
-            <h3>Your Comment</h3>
-          }
           <section className="container final">
             {poems.poem.lines.map((line, index) => {
-              return <div key={index}>{line}</div>
+              return <Typography align='center' key={index}>{line}</Typography>
             })}
           </section>
           <Button onClick={handleSubmit} type='submit' variant='contained' color='primary'>Create</Button>

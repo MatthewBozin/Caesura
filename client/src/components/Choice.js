@@ -1,15 +1,16 @@
 import React from 'react'
+import {Typography} from '@mui/material'
 
 const Choice = (props) => {
   return (
     <div className="choice" onClick={() => {props.add(props.poem.line, props.poem.author, props.poem.title)}}>
-      <h6>from</h6>
-      <h3>{props.poem.title}</h3>
-      <h6>{props.poem.author}</h6>
+      <Typography>from</Typography>
+      <Typography variant={'h4'}>{props.poem.title}</Typography>
+      <Typography variant={'h6'}>by {props.poem.author}</Typography>
       {props.poem.prevLines.map((prevLine, index) => {
-        return <div className="prevLine" key={index}>{prevLine}</div>
+        return <Typography className="prevLine" key={index}>{prevLine}</Typography>
       })}
-      <div>{props.poem.line}</div>
+      <Typography>{props.poem.line}</Typography>
     </div>
   )
 }

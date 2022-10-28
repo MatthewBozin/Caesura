@@ -39,7 +39,7 @@ function App() {
             <CircularProgress/>
           </div>
         ) : (
-          <div>
+          <div className='screen'>
             <Navbar setPage={setPage} user={user} setUser={setUser}/>
             {context.page === 'landing' && <Landing user={user} setPage={setPage}/>}
             {context.page === 'feed' && <Feed user={user}/>}

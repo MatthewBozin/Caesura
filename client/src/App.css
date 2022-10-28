@@ -6,9 +6,9 @@ a {
   color: white;
 }
 
-button {
-  border: 1px solid white;
-  padding: 8px;
+hr {
+  width: 50%;
+  margin: 0 auto;
 }
 
 .app {
@@ -23,6 +23,36 @@ button {
   color: white;
 }
 
+.poem {
+  text-align: center;
+  background-color: #282c34;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.screen {
+  min-height: 89.4vh;
+}
+
+.by {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button {
+  background-color: #282c34;
+  border: 3px solid white;
+  color: white;
+  border-radius: 8px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
 .footer {
   border-top: 1px solid white;
   color: white;
@@ -32,7 +62,7 @@ button {
   justify-content: space-evenly;
 }
 
-.card {
+.signup {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px 5px;
@@ -58,6 +88,8 @@ button {
 .choice {
   width: 33%;
   border: 1px solid #282c34;
+  border-radius: 12px;
+  padding: 12px;
 }
 
 .choice:hover {
@@ -66,12 +98,11 @@ button {
 }
 
 .title {
-  cursor: pointer;
+  padding: 12px;
 }
 
-.poem {
-  max-width: 600;
-  margin: 0 auto;
+.spacing {
+  margin: 12px;
 }
 
 .prevLine {

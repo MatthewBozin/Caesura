@@ -28,7 +28,7 @@ const Login = (props) => {
 
     return (
         <div className="app">
-          <Card className='card'>
+          <Card>
               <CardContent>
                   <Typography gutterBottom variant='h5'>Log In</Typography>
                   <form onSubmit={handleSubmit}>

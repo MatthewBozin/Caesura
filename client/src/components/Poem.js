@@ -1,37 +1,43 @@
-import React, {useContext} from 'react'
-import { Button, Typography, Card, CardContent } from '@mui/material'
+import React, {useContext, useState} from 'react'
+import { Typography, Card, CardContent } from '@mui/material'
 import DataService from "../dataService";
 import { Context } from '../Context';
 
 const Poem = (props) => {
   const [context, setContext] = useContext(Context)
+  const [expanded, setExpanded] = useState(false)
   return (
-    <Card className="app poem" style={{ border: "none", boxShadow: "none" }}>
-        <CardContent className="app">
+    <Card style={{ border: "none", boxShadow: "none" }}>
+        <CardContent className="poem">
             {props.poem.title && <Typography align='center' gutterBottom variant='h4'>{props.poem.title}</Typography>}
-            {props.page !== 'profile' && <Typography align='center' gutterBottom variant='h5'>By {props.poem.userName}</Typography>}
             {props.poem.lines.map((line, i) => {
                 return <Typography align='center' key={i}>{line}</Typography>
             })}
             <hr></hr>
-            <Typography align='center'>With some help from:</Typography>
-            <Typography align='center'>
-              {props.poem.authors.map((author, i) => {
-                  return <span key={i}>{i !== 0 && <span>, </span>}{author}</span>
-              })}
-            </Typography>
+            {props.page !== 'profile' && <div className="by">
+              <Typography align='center' gutterBottom>By {props.poem.userName}</Typography>
+              <button className='button' onClick={() => {setExpanded(!expanded)}}>+</button>
+            </div>}
+            {expanded && <div>
+              <Typography align='center'>With some help from:</Typography>
+              <Typography align='center'>
+                {props.poem.authors.map((author, i) => {
+                    return <span key={i}>{i !== 0 && <span>, </span>}{author}</span>
+                })}
+              </Typography>
+            </div>}
             <hr></hr>
-            <Typography align='center'>On {props.poem.date}</Typography>
+            <Typography align='center'>{props.poem.date}</Typography>
             <div>  
-              {props.user && <Button variant='contained' color='primary' onClick={() => {
+              {props.user && <button className='button' variant='contained' color='primary' onClick={() => {
                 DataService.snap({_id: props.poem._id}).then(() => {
                   DataService.getPoems().then((res) => {
                     props.setPoems(res.data.poems)
                   })
                 })
                 props.setPoems(null)
-              }}>Snaps: {props.poem.snaps.length}</Button>}   
-              {props.page !== 'poem' && <Button variant='contained' color='primary' onClick={async () => {
+              }}>Snaps: {props.poem.snaps.length}</button>}   
+              {props.page !== 'poem' && <button className='button' variant='contained' color='primary' onClick={async () => {
                 context.id = props.poem._id
                 context.poem = props.poem
                 context.page = 'viewPoem'
@@ -39,15 +45,15 @@ const Poem = (props) => {
                 console.log(res.data.comments)
                 context.comments = res.data.comments
                 setContext({...context})
-              }}>Comments: {props.poem.comments}</Button>} 
-              {props.user.userName === props.poem.userName && <Button variant='contained' color='primary' onClick={() => {
+              }}>Comments: {props.poem.comments}</button>} 
+              {props.user.userName === props.poem.userName && <button className='button' variant='contained' color='primary' onClick={() => {
                 DataService.deletePoem({_id: props.poem._id}).then(() => {
                   DataService.getPoems().then((res) => {
                     props.setPoems(res.data.poems)
                   })
                 })
                 props.setPoems(null)
-              }}>Delete</Button>}
+              }}>Delete</button>}
             </div>
         </CardContent>
     </Card>

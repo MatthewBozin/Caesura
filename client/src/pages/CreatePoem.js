@@ -1,6 +1,7 @@
 import React, {useState} from "react";
-import { Button, CircularProgress } from '@mui/material'
+import { Button, Typography, CircularProgress } from '@mui/material'
 import DataService from "../dataService";
+import Choice from "../components/Choice"
 
 const Create = (props) => {
 
@@ -112,49 +113,36 @@ const Create = (props) => {
         </div>
       ) : (
         <div className="app">
-          <h2>Build Your {step === 'poem' && <span>Poem</span>}{step === 'title' && <span>Title</span>}</h2>
+          <Typography align='center' className='title' variant={'h3'}>Build Your {step === 'poem' && <span>Poem</span>}{step === 'title' && <span>Title</span>}</Typography>
             <div>
               {step === 'poem' && (
                 <section className="container">
                   {poems.choices.map((poem, index) => {
-                    return (
-                      <div className="choice" key={index} onClick={() => {add(poem.line, poem.author, poem.title)}}>
-                        <h6>from</h6>
-                        <h3>{poem.title}</h3>
-                        <h6>{poem.author}</h6>
-                        {poem.prevLines.map((prevLine, index) => {
-                          return <div className="prevLine" key={index}>{prevLine}</div>
-                        })}
-                        <div>{poem.line}</div>
-                      </div>
-                    )
+                    return <Choice poem={poem} add={add} key={index}/>
                   })}
                 </section>
               )}
               {step === 'title' && (
                 <section className="container">
                   {activeTitles.map((word, index) => {
-                    return <button className='title' onClick={() => {addToTitle(word)}} key={index} type='submit'>{word}</button>
+                    return <button className='button' onClick={() => {addToTitle(word)}} key={index} type='submit'>{word}</button>
                   })}
                 </section>
               )}
             </div>
-          {poems.all.length !== 0 && 
-            <h3>Your Poem</h3>
-          }
           {step === 'title' && (
             <h3>{poems.poem.title}</h3>
           )}
-          <section className="container final">
+          <section className="container final spacing">
             {poems.poem.lines.map((line, index) => {
-              return <div key={index}>{line}</div>
+              return <Typography align='center'key={index}>{line}</Typography>
             })}
           </section>
           {step === 'poem' && 
-            <Button onClick={() => {resetTitles();setStep('title')}} type='submit' variant='contained' color='primary'>Build Title</Button>
+            <Button className='title' onClick={() => {resetTitles();setStep('title')}} type='submit' variant='contained' color='primary'>Build Title</Button>
           }
           {step === 'title' && 
-            <Button onClick={handleSubmit} type='submit' variant='contained' color='primary'>Create</Button>
+            <Button className='title' onClick={handleSubmit} type='submit' variant='contained' color='primary'>Create</Button>
           }
         </div>
       )}

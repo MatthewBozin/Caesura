@@ -10,14 +10,6 @@ module.exports = {
             console.log(err)
         }
     },
-    getPoems: async (req,res)=>{
-        try{
-            let poems = await Poem.find({userId:req.user.id}).sort({ _id: "descending" })
-            res.json({poems: poems, user: req.user})
-        }catch(err){
-            console.log(err)
-        }
-    },
     getFeed: async (req,res)=>{
         try{
             let poems = await Poem.find().sort({ _id: "descending" })

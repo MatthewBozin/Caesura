@@ -31,7 +31,7 @@ const Poem = (props) => {
             <div>  
               {props.user && <button className='button' variant='contained' color='primary' onClick={() => {
                 DataService.snap({_id: props.poem._id}).then(() => {
-                  DataService.getPoems().then((res) => {
+                  DataService.getFeed().then((res) => {
                     props.setPoems(res.data.poems)
                   })
                 })
@@ -48,7 +48,7 @@ const Poem = (props) => {
               }}>Comments: {props.poem.comments}</button>} 
               {props.user.userName === props.poem.userName && <button className='button' variant='contained' color='primary' onClick={() => {
                 DataService.deletePoem({_id: props.poem._id}).then(() => {
-                  DataService.getPoems().then((res) => {
+                  DataService.getFeed().then((res) => {
                     props.setPoems(res.data.poems)
                   })
                 })

@@ -46,7 +46,7 @@ function App() {
             {context.page === 'create' && <CreatePoem setPage={setPage} user={user}/>}
             {context.page === 'comment' && <CreateComment setPage={setPage} user={user}/>}
             {context.page === 'login' && <Login setUser={setUser} setPage={setPage}/>}
-            {context.page === 'signup' && <Signup />}
+            {context.page === 'signup' && <Signup setPage={setPage}/>}
             <Footer />
           </div>
         )}

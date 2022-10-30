@@ -12,6 +12,12 @@ const Feed = (props) => {
     })
   }, [])
 
+  const filter = (array, parameter, value) => array.filter(el => el[parameter] = value)
+
+  const myPoems = () => {
+    setPoems(filter(poems, 'userName', props.user.userName))
+  }
+
   return (
     <div className="app">
         {poems && poems.map((poem, i) => <Poem user={props.user} poem={poem} setPoems={setPoems} viewPoem={props.viewPoem} page={'feed'} key={i} />)}

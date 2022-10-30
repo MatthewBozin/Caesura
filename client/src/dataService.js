@@ -19,9 +19,6 @@ class DataService {
     logout() {
         return URL.get(`/logout`)
     }
-    getPoems() {
-        return URL.get(`/poems/`)
-    }
     getPoem() {
         return URL.get(`/poems/getPoem`)
     }

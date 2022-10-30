@@ -7,7 +7,6 @@ import Landing from './pages/Landing.js';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Feed from './pages/Feed';
-import Profile from './pages/Profile';
 import CreateComment from './pages/CreateComment'
 import ViewPoem from './pages/ViewPoem';
 import dataService from './dataService';
@@ -43,12 +42,11 @@ function App() {
             <Navbar setPage={setPage} user={user} setUser={setUser}/>
             {context.page === 'landing' && <Landing user={user} setPage={setPage}/>}
             {context.page === 'feed' && <Feed user={user}/>}
-            {context.page === 'profile' && <Profile user={user}/>}
             {context.page === 'viewPoem' && <ViewPoem setPage={setPage} user={user}/>}
             {context.page === 'create' && <CreatePoem setPage={setPage} user={user}/>}
             {context.page === 'comment' && <CreateComment setPage={setPage} user={user}/>}
             {context.page === 'login' && <Login setUser={setUser} setPage={setPage}/>}
-            {context.page === 'signup' && <Signup />}
+            {context.page === 'signup' && <Signup setPage={setPage}/>}
             <Footer />
           </div>
         )}

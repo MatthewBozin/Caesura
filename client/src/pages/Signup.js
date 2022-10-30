@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Typography, Card, CardContent, Grid, TextField, Button } from '@mui/material'
 import DataService from "../dataService";
 
-const Signup = () => {
+const Signup = (props) => {
 
     const defaultValues = {
       userName: "",
@@ -21,10 +21,10 @@ const Signup = () => {
       });
     };
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        DataService.signup(formValues);
-        console.log(formValues);
+    const handleSubmit = async e => {
+        e.preventDefault()
+        await DataService.signup(formValues)
+        props.setPage('login')
     }
 
     return (

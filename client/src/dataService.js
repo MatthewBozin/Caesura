@@ -2,7 +2,6 @@ import axios from "axios";
 
 const URL = axios.create({
     withCredentials: true,
-    baseURL: process.env.REACT_APP_URL,
     headers: {"Content-type": "application/json"}
 })
 

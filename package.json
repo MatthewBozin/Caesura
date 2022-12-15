@@ -4,6 +4,7 @@
   "description": "Backend for the Caesura web app",
   "main": "server.js",
   "scripts": {
+    "build": "npm --prefix client run build",
     "dev": "nodemon server.js",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",

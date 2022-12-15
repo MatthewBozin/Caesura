@@ -25,6 +25,9 @@ app.use(
   })
 )
 
+// Render React as View
+app.use(express.static(path.join(__dirname, "..", "client", "build")));
+
 // Passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
@@ -34,7 +37,7 @@ app.use('/', mainRoutes)
 app.use('/poems', poemRoutes)
 app.use('/comments', commentRoutes)
 app.get("'", (_, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
 })
  
 connectDB().then(() => {

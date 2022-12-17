@@ -8,7 +8,7 @@ const Poem = (props) => {
   const [expanded, setExpanded] = useState(false)
   return (
     <Card style={{ border: "none", boxShadow: "none" }}>
-        <CardContent className="poem">
+        <CardContent className='bg-slate-500'>
             {props.poem.title && <Typography align='center' gutterBottom variant='h4'>{props.poem.title}</Typography>}
             {props.poem.lines.map((line, i) => {
                 return <Typography align='center' key={i}>{line}</Typography>

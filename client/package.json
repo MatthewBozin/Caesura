@@ -3,6 +3,7 @@
   "name": "caesura",
   "version": "0.1.0",
   "scripts": {
+    "build:css": "tailwindcss build src/tailwind.css -o src/index.css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -25,5 +26,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
   }
 }

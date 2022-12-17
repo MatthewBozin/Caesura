@@ -126,7 +126,11 @@ const Create = (props) => {
               {step === 'title' && (
                 <section className="container">
                   {activeTitles.map((word, index) => {
-                    return <button className='button' onClick={() => {addToTitle(word)}} key={index} type='submit'>{word}</button>
+                    return (
+                      <motion.div initial={{ scale: 1 }} whileHover={{ scale: 1.3 }}>
+                        <button className='button' onClick={() => {addToTitle(word)}} key={index} type='submit'>{word}</button>
+                      </motion.div>
+                    )
                   })}
                 </section>
               )}

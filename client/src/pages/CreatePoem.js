@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { Button, Typography, CircularProgress } from '@mui/material'
 import DataService from "../dataService";
 import Choice from "../components/Choice"
+import { motion } from 'framer-motion'
 
 const Create = (props) => {
 
@@ -135,7 +136,11 @@ const Create = (props) => {
           )}
           <section className="container final spacing">
             {poems.poem.lines.map((line, index) => {
-              return <Typography align='center'key={index}>{line}</Typography>
+              return (
+                <motion.div initial={{ y: -70 }} animate={{ y: 0 }}>
+                  <Typography align='center'key={index}>{line}</Typography>
+                </motion.div>
+              )
             })}
           </section>
           {step === 'poem' && 

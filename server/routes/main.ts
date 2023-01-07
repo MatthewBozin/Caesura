@@ -1,7 +1,6 @@
-const express = require('express')
-const router = express.Router()
+import { Router } from 'express'
+const router = Router()
 const authController = require('../controllers/auth')
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 router.get('/login', authController.getLogin)
 router.post('/login', authController.postLogin)

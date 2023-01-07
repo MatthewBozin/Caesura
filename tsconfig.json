@@ -8,6 +8,7 @@
         "sourceMap": true,
         "outDir": "dist/client",
         "baseUrl": ".",
+        "jsx": "react-jsx",
         "paths": {
             "*": [
                 "node_modules/*"

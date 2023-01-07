@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import dataService from '../dataService';
 import Poem from "../components/Poem";
 
-const Feed = (props) => {
+const Feed = (props: any) => {
 
   const [poems, setPoems] = useState(null)
   const [filters, setFilters] = useState([])
@@ -14,7 +14,7 @@ const Feed = (props) => {
     })
   }, [])
 
-  const sortPoems = (array) => {
+  const sortPoems = (array: Array<any>) => {
     if (!sort) return array
     if (sort === 'snaps') return array.sort((a, b) => b.snaps.length - a.snaps.length)
     return array.sort((a, b) => b[sort] - a[sort])
@@ -29,12 +29,12 @@ const Feed = (props) => {
     return filteredPoems
   }
 
-  const addSort = (sort) => {
+  const addSort = (sort: string) => {
     setSort(sort)
     setPoems([...poems])
   }
 
-  const addFilter = (filter) => {
+  const addFilter = (filter: Array<any>) => {
     setFilters([...filters, filter])
     setPoems([...poems])
   }
@@ -42,12 +42,12 @@ const Feed = (props) => {
   return (
     <div className="app">
       <div className='by'>
-        <button className={filters.length !== 0 ? 'button active' : 'button'} onClick={() => {addFilter(['userName', props.user.userName])}}>My Poems</button>
-        <button className={sort === 'snaps' ? 'button active' : 'button'} onClick={() => {addSort('snaps')}}>Most Snaps</button>
-        <button className={sort === 'comment' ? 'button active' : 'button'} onClick={() => {addSort('comments')}}>Most Comments</button>
-        <button className='button' onClick={() => {setFilters([]);setSort(null)}}>Clear Filters</button>
+        <button className={filters.length !== 0 ? 'button active' : 'button'} onClick={() => { addFilter(['userName', props.user.userName]) }}>My Poems</button>
+        <button className={sort === 'snaps' ? 'button active' : 'button'} onClick={() => { addSort('snaps') }}>Most Snaps</button>
+        <button className={sort === 'comment' ? 'button active' : 'button'} onClick={() => { addSort('comments') }}>Most Comments</button>
+        <button className='button' onClick={() => { setFilters([]); setSort(null) }}>Clear Filters</button>
       </div>
-      {poems && sortPoems(applyFilters(poems)).map((poem, i) => <Poem user={props.user} poem={poem} setPoems={setPoems} viewPoem={props.viewPoem} page={'feed'} key={i} />)}
+      {poems && sortPoems(applyFilters()).map((poem, i) => <Poem user={props.user} poem={poem} setPoems={setPoems} viewPoem={props.viewPoem} page={'feed'} key={i} />)}
     </div>
   )
 }

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+import { Schema } from 'mongoose'
 
-const PoemSchema = new mongoose.Schema({
+const PoemSchema: Schema = new Schema({
   lines: {
     type: Array,
     required: true,
@@ -21,11 +21,11 @@ const PoemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  date:{
+  date: {
     type: String,
     required: true
   },
-  snaps:{
+  snaps: {
     type: Array,
     required: true
   },

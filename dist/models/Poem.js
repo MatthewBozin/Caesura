@@ -1,13 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
-const CommentSchema = new mongoose_1.Schema({
+const PoemSchema = new mongoose_1.Schema({
     lines: {
         type: Array,
         required: true,
     },
     authors: {
         type: Array,
+        required: true,
+    },
+    title: {
+        type: String,
         required: true,
     },
     userId: {
@@ -26,10 +30,10 @@ const CommentSchema = new mongoose_1.Schema({
         type: Array,
         required: true
     },
-    poem: {
-        type: String,
-        required: true,
-    },
+    comments: {
+        type: Number,
+        required: true
+    }
 });
-module.exports = mongoose.model("Comment", CommentSchema);
-//# sourceMappingURL=Comment.js.map
+module.exports = mongoose.model('Poem', PoemSchema);
+//# sourceMappingURL=Poem.js.map

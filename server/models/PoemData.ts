@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+import { Schema } from 'mongoose'
 
-const PoemDataSchema = new mongoose.Schema({
+const PoemDataSchema: Schema = new Schema({
   lines: {
     type: Array,
     required: true,

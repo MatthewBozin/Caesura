@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import { Schema } from "mongoose";
 
-const CommentSchema = new mongoose.Schema({
+const CommentSchema: Schema = new Schema({
   lines: {
     type: Array,
     required: true,

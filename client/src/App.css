@@ -86,14 +86,12 @@ hr {
 }
 
 .choice {
-  width: 33%;
   border: 1px solid #282c34;
   border-radius: 12px;
   padding: 12px;
 }
 
 .choice:hover {
-  border: 1px solid white;
   cursor: pointer;
 }
 

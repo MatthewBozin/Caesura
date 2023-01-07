@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import dataService from '../dataService';
 import Poem from "../components/Poem";
+import { Button } from "@mui/material";
 
 const Feed = (props) => {
 
@@ -42,10 +43,10 @@ const Feed = (props) => {
   return (
     <div className="app">
       <div className='by'>
-        <button className={filters.length !== 0 ? 'button active' : 'button'} onClick={() => {addFilter(['userName', props.user.userName])}}>My Poems</button>
-        <button className={sort === 'snaps' ? 'button active' : 'button'} onClick={() => {addSort('snaps')}}>Most Snaps</button>
-        <button className={sort === 'comment' ? 'button active' : 'button'} onClick={() => {addSort('comments')}}>Most Comments</button>
-        <button className='button' onClick={() => {setFilters([]);setSort(null)}}>Clear Filters</button>
+        <Button variant='contained' color={filters.length !== 0 ? 'secondary' : 'primary'} onClick={() => {addFilter(['userName', props.user.userName])}}>My Poems</Button>
+        <Button variant='contained' color={sort === 'snaps' ? 'secondary' : 'primary'} onClick={() => {addSort('snaps')}}>Most Snaps</Button>
+        <Button variant='contained' color={sort === 'comment' ? 'secondary' : 'primary'} onClick={() => {addSort('comments')}}>Most Comments</Button>
+        <Button variant='contained' color='primary' onClick={() => {setFilters([]);setSort(null)}}>Clear Filters</Button>
       </div>
       {poems && sortPoems(applyFilters(poems)).map((poem, i) => <Poem user={props.user} poem={poem} setPoems={setPoems} viewPoem={props.viewPoem} page={'feed'} key={i} />)}
     </div>

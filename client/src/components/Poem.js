@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react'
-import { Typography, Card, CardContent } from '@mui/material'
+import { Typography, Card, CardContent, Button } from '@mui/material'
 import DataService from "../dataService";
 import { Context } from '../Context';
 
@@ -29,15 +29,15 @@ const Poem = (props) => {
             <hr></hr>
             <Typography align='center'>{props.poem.date}</Typography>
             <div>  
-              {props.user && <button className='button' variant='contained' color='primary' onClick={() => {
+              {props.user && <Button variant='contained' color='primary' onClick={() => {
                 DataService.snap({_id: props.poem._id}).then(() => {
                   DataService.getFeed().then((res) => {
                     props.setPoems(res.data.poems)
                   })
                 })
                 props.setPoems(null)
-              }}>Snaps: {props.poem.snaps.length}</button>}   
-              {props.page !== 'poem' && <button className='button' variant='contained' color='primary' onClick={async () => {
+              }}>Snaps: {props.poem.snaps.length}</Button>}   
+              {props.page !== 'poem' && <Button variant='contained' color='primary' onClick={async () => {
                 context.id = props.poem._id
                 context.poem = props.poem
                 context.page = 'viewPoem'
@@ -45,15 +45,15 @@ const Poem = (props) => {
                 console.log(res.data.comments)
                 context.comments = res.data.comments
                 setContext({...context})
-              }}>Comments: {props.poem.comments}</button>} 
-              {props.user.userName === props.poem.userName && <button className='button' variant='contained' color='primary' onClick={() => {
+              }}>Comments: {props.poem.comments}</Button>} 
+              {props.user.userName === props.poem.userName && <Button variant='contained' color='primary' onClick={() => {
                 DataService.deletePoem({_id: props.poem._id}).then(() => {
                   DataService.getFeed().then((res) => {
                     props.setPoems(res.data.poems)
                   })
                 })
                 props.setPoems(null)
-              }}>Delete</button>}
+              }}>Delete</Button>}
             </div>
         </CardContent>
     </Card>

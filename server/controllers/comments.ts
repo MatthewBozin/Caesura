@@ -1,7 +1,7 @@
 import Poem from '../models/Poem'
 import Comment from '../models/Comment'
 
-module.exports = {
+export default {
     createComment: async (req: any, res: any) => {
         try {
             let date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')

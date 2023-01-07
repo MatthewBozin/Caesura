@@ -1,7 +1,7 @@
 import express from 'express';
+import commentsController from "../controllers/comments";
 
 const router = express.Router();
-const commentsController = require("../controllers/comments");
 
 //Comment Routes - simplified for now
 
@@ -13,4 +13,4 @@ router.put("/snapComment/", commentsController.snapComment);
 
 router.post("/deleteComment/", commentsController.deleteComment);
 
-module.exports = router;
+export default router;

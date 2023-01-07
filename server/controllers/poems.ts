@@ -1,7 +1,7 @@
 import Poem from '../models/Poem'
 import PoemData from '../models/PoemData'
 
-module.exports = {
+export default {
     getPoem: async (req: any, res: any) => {
         try {
             let poem = await Poem.findById(req.body.id)

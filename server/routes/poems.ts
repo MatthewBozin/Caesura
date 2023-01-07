@@ -1,6 +1,6 @@
 import { Router } from 'express'
 const router = Router()
-const poemsController = require('../controllers/poems') 
+const poemsController = require('../controllers/poems')
 
 router.get('/getPoem', poemsController.getPoem)
 
@@ -14,4 +14,4 @@ router.get('/poemData/', poemsController.getPoemData)
 
 router.put('/snap', poemsController.snap)
 
-module.exports = router
+export default router

@@ -1,3 +1,5 @@
 declare module 'bcrypt'
 declare module 'passport'
 declare module 'validator'
+declare module 'morgan'
+declare module 'express-session'

@@ -11,7 +11,7 @@ const mainRoutes = require('./routes/main')
 const poemRoutes = require('./routes/poems')
 const commentRoutes = require('./routes/comments');
 
-require('dotenv').config({path: './config/.env'})
+require('dotenv').config({ path: './config/.env' })
 require('./config/passport')(passport)
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -36,10 +36,10 @@ app.use(passport.session())
 app.use('/', mainRoutes)
 app.use('/poems', poemRoutes)
 app.use('/comments', commentRoutes)
-app.get("'", (_, res) => {
+app.get("'", (_: any, res: any) => {
   res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
 })
- 
+
 connectDB().then(() => {
   //Server Running
   app.listen(process.env.PORT, () => {

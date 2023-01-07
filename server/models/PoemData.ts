@@ -15,4 +15,6 @@ const PoemDataSchema: Schema = new Schema({
   }
 })
 
-module.exports = mongoose.model('PoemData', PoemDataSchema)
+const PoemData = mongoose.model('PoemData', PoemDataSchema)
+
+export default PoemData

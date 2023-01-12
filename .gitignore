@@ -1,6 +1,5 @@
 node_modules
 .vscode/*
-config/.env
 .env
 build
 dist

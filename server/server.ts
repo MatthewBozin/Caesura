@@ -1,18 +1,18 @@
-const express = require('express')
-const path = require('path');
-const app = express()
-const mongoose = require('mongoose')
-const passport = require('passport')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
-const logger = require('morgan')
-const connectDB = require('./config/database')
-const mainRoutes = require('./routes/main')
-const poemRoutes = require('./routes/poems')
-const commentRoutes = require('./routes/comments');
+import "dotenv/config"
+import express from 'express'
+import path from 'path';
+import passport from 'passport'
+import session from 'express-session'
+import logger from 'morgan'
+import MongoStore from 'connect-mongo'
+import connectDB from './config/database';
+import mainRoutes from './routes/main';
+import poemRoutes from './routes/poems';
+import commentRoutes from './routes/comments';
+import passportConfig from './config/passport';
 
-require('dotenv').config({ path: './config/.env' })
-require('./config/passport')(passport)
+const app = express()
+passportConfig(passport)
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))
@@ -21,7 +21,7 @@ app.use(
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
   })
 )
 

@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose'
+import { Schema, model } from 'mongoose'
 
 const PoemSchema: Schema = new Schema({
   lines: {
@@ -35,6 +35,6 @@ const PoemSchema: Schema = new Schema({
   }
 })
 
-const Poem = mongoose.model('Poem', PoemSchema)
+const Poem = model('Poem', PoemSchema)
 
 export default Poem

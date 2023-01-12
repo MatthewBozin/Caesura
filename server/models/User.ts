@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose'
+import { Schema, model } from 'mongoose'
 import { hash, genSalt, compare } from 'bcrypt'
 
 const UserSchema: any = new Schema({
@@ -28,6 +28,6 @@ UserSchema.methods.comparePassword = function comparePassword(candidatePassword:
   })
 }
 
-const User = mongoose.model('User', UserSchema)
+const User = model('User', UserSchema)
 
 export default User

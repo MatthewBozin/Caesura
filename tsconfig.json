@@ -9,10 +9,15 @@
         "outDir": "dist",
         "baseUrl": ".",
         "jsx": "react-jsx",
-        "paths": {
-            "*": [
-                "node_modules/*"
-            ]
-        }
-    }
+        "skipLibCheck": true
+    },
+    "ts-node": {
+        "files": true
+    },
+    "include": [
+        "./server/"
+    ],
+    "exclude": [
+        "./node-modules"
+    ]
 }

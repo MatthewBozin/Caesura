@@ -11,9 +11,9 @@ Create your own art by remixing classic poems!
 
 ## How It's Made:
 
-**Tech used:** React, NodeJS, Express, MongoDB, Passport
+**Tech used:** React, NodeJS, Typescript, Express, MongoDB, Passport, Material UI
 
-The frontend client is built in React, and the backend is built with Node.js, Express, and MongoDB. 
+The frontend client is built in React with Material UI, and the backend is built with Node.js, Express, and MongoDB. 
 
 The frontend pulls poem data from an internal database, and then provides it to the user in batches of three. The user selects one of the three choices for each batch, and that adds the selected line to their remixed poem. When the poem is done, the app gives the user choices between 5 randomized words taken from the titles of all the selected poems. Once the user has created their remixed poem, they click the "Create" button, and the frontend sends that data to the server, which processes the request and adds the poem data to the MongoDB database. 
 

@@ -1,6 +1,6 @@
 import { Router } from 'express'
+import poemsController from '../controllers/poems'
 const router = Router()
-const poemsController = require('../controllers/poems')
 
 router.get('/getPoem', poemsController.getPoem)
 

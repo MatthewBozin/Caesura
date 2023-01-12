@@ -1,17 +1,17 @@
-import { passport } from 'passport'
+import passport from 'passport'
 import validator from 'validator'
 import User from '../models/User'
 
-export default {
-  getLogin: (req: any, res: any) => {
+class AuthController {
+  getLogin(req: any, res: any) {
     //if user is logged in, redirects them to todos, otherwise redirects to login
     if (req.user) {
       return res.json({ userName: req.user.userName, email: req.user.email, password: req.user.password })
     }
     return res.json({ message: 'Not logged in.' })
-  },
+  }
 
-  postLogin: (req: any, res: any, next: any) => {
+  postLogin(req: any, res: any, next: any) {
     console.log(req.body);
     //uses package 'validator' to do password validation
     const validationErrors = []
@@ -34,10 +34,10 @@ export default {
         return res.json({ userName: req.user.userName, email: req.user.email, password: req.user.password })
       })
     })(req, res, next)
-  },
+  }
 
   //on clicking the logout button, logs user out and destroys their session
-  logout: (req: any, res: any) => {
+  logout(req: any, res: any) {
     req.logout(() => {
       console.log('User has logged out.')
     })
@@ -46,20 +46,20 @@ export default {
       req.user = null
       return res.json({ message: 'Logout successful.' })
     })
-  },
+  }
 
   //when user clicks the 'signup' button, redirects them to todos page if they're logged in already
   //otherwise redirects them to 'signup' page
-  getSignup: (req: any, res: any) => {
+  getSignup(req: any, res: any) {
     if (req.user) {
       return res.json({ message: 'You are already logged in!' })
     }
     res.render('signup', {
       title: 'Create Account'
     })
-  },
+  }
 
-  postSignup: (req: any, res: any, next: any) => {
+  postSignup(req: any, res: any, next: any) {
     //uses package 'validator' to do password validation
     const validationErrors = []
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
@@ -103,3 +103,5 @@ export default {
     })
   }
 }
+
+export default new AuthController()

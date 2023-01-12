@@ -1,7 +1,13 @@
 import { AppBar, Toolbar, Typography, Stack, Button } from '@mui/material'
 import dataService from '../dataService'
 
-const Navbar = (props: any) => {
+interface Props {
+  user: any,
+  setUser: any,
+  setPage: any
+}
+
+const Navbar = (props: Props) => {
   return (
     <AppBar position='static' color='primary'>
       <Toolbar>

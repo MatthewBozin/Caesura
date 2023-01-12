@@ -3,7 +3,12 @@ import { Typography, Card, CardContent } from '@mui/material'
 import DataService from "../dataService";
 import { Context } from '../Context';
 
-const Comment = (props: any) => {
+interface Props {
+  comment: any,
+  user: any
+}
+
+const Comment = (props: Props) => {
   const [context, setContext] = useContext<any>(Context)
   const [expanded, setExpanded] = useState(false)
   return (

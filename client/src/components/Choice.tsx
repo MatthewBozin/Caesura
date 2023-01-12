@@ -1,7 +1,12 @@
 import { Typography } from '@mui/material'
 import { motion } from 'framer-motion'
 
-const Choice = (props: any) => {
+interface Props {
+  poem: any,
+  add: any
+}
+
+const Choice = (props: Props) => {
   return (
     <motion.div className="choice" initial={{ scale: 0.9 }} whileHover={{ scale: 1 }}>
       <div onClick={() => { props.add(props.poem.line, props.poem.author, props.poem.title) }}>
